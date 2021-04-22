@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nike_store/pages/shoe.dart';
+import 'package:nike_store/pages/shoe_description.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,8 +15,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: 'shoe',
-      routes: {'shoe': (_) => ShoePage()},
+      initialRoute: 'shoe_description',
+      routes: {
+        'shoe': (_) => ShoePage(),
+        'shoe_description': (_) => ShoeDescriptionPage(),
+      },
     );
   }
 }

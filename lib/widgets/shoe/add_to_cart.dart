@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nike_store/widgets/shared/base_button.dart';
 
 class AddToCart extends StatelessWidget {
+  final String price;
   const AddToCart({
     Key key,
+    this.price,
   }) : super(key: key);
 
   @override
@@ -17,19 +20,11 @@ class AddToCart extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                '\$189.0',
+                this.price,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            TextButton(
-              onPressed: () => {},
-              child: Text('Add to cart'),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Color(0xffffd54f)),
-                  foregroundColor: MaterialStateProperty.all(Colors.white),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(99)))),
-            )
+            BaseButton(text: 'Add to cart'),
           ],
         ),
       ),
