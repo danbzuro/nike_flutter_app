@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:nike_store/pages/shoe.dart';
 import 'package:nike_store/pages/shoe_description.dart';
+import 'package:nike_store/state/shoe_state.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => new ShoeState()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: 'shoe_description',
+      initialRoute: 'shoe',
       routes: {
         'shoe': (_) => ShoePage(),
         'shoe_description': (_) => ShoeDescriptionPage(),

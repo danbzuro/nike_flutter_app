@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:nike_store/widgets/shared/base_button.dart';
 import 'package:nike_store/widgets/shoe/shoe_info.dart';
 import 'package:nike_store/widgets/shoe/shoe_widget.dart';
+import 'package:nike_store/widgets/shoeDescription/button_actions.dart';
 import 'package:nike_store/widgets/shoeDescription/buy_now.dart';
+import 'package:nike_store/widgets/shoeDescription/circle_colors.dart';
 
 class ShoeDescriptionPage extends StatelessWidget {
   @override
@@ -11,11 +13,29 @@ class ShoeDescriptionPage extends StatelessWidget {
       body: Container(
         child: Column(
           children: [
-            ShoeWidget(),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Expanded(
-                child: SingleChildScrollView(
+            Stack(children: [
+              Hero(
+                tag: 'shoeWidget',
+                child: ShoeWidget(),
+              ),
+              SafeArea(
+                child: Positioned(
+                  child: FloatingActionButton(
+                    onPressed: () => {
+                      Navigator.pop(context),
+                    },
+                    child: Icon(Icons.chevron_left, size: 40),
+                    elevation: 0,
+                    highlightElevation: 0,
+                    backgroundColor: Colors.transparent,
+                  ),
+                ),
+              )
+            ]),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.all(20),
                   child: Column(
                     children: [
                       ShoeInfo(
@@ -32,7 +52,9 @@ class ShoeDescriptionPage extends StatelessWidget {
                           CircleColors(),
                           BaseButton(),
                         ],
-                      )
+                      ),
+                      SizedBox(height: 90),
+                      ButtonActions()
                     ],
                   ),
                 ),
@@ -40,42 +62,6 @@ class ShoeDescriptionPage extends StatelessWidget {
             )
           ],
         ),
-      ),
-    );
-  }
-}
-
-class CircleColors extends StatelessWidget {
-  const CircleColors({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        children: [
-          Positioned(child: RoundedColor(color: Color(0xffcddb3d)), left: 60),
-          Positioned(child: RoundedColor(color: Color(0xfffab600)), left: 40),
-          Positioned(child: RoundedColor(color: Color(0xff3fa2f6)), left: 20),
-          RoundedColor(color: Color(0xff3f5861))
-        ],
-      ),
-    );
-  }
-}
-
-class RoundedColor extends StatelessWidget {
-  final Color color;
-  const RoundedColor({Key key, this.color}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 35,
-      height: 35,
-      decoration: BoxDecoration(
-        color: this.color,
-        shape: BoxShape.circle,
       ),
     );
   }

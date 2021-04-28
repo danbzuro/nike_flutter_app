@@ -18,7 +18,10 @@ class ShoePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
-                    ShoeWidget(hasSizes: true),
+                    Hero(
+                      tag: 'shoeWidget',
+                      child: ShoeWidget(hasSizes: true),
+                    ),
                     ShoeInfo(
                       title: 'Nike Air Max 720',
                       description:
