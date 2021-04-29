@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nike_store/pages/shoe.dart';
-import 'package:nike_store/pages/shoe_description.dart';
+import 'package:nike_store/routes/app_routes.dart';
 import 'package:nike_store/state/shoe_state.dart';
 import 'package:provider/provider.dart';
 
@@ -25,10 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: 'shoe',
-      routes: {
-        'shoe': (_) => ShoePage(),
-        'shoe_description': (_) => ShoeDescriptionPage(),
-      },
+      routes: routes,
     );
   }
 }
